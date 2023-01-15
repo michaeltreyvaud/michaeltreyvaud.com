@@ -20,5 +20,5 @@ phases:
       - echo BUILD done
   post_build:
     commands:
-      - aws s3 sync --delete build/ "s3://$BUCKET"
+      - aws s3 sync --delete dist/ "s3://$BUCKET"
       - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths '/*'
