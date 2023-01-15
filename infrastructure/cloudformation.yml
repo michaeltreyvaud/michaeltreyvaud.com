@@ -25,6 +25,13 @@ Parameters:
     Description: The app domain name - manual SSL in N.Virginia region
 
 Resources:
+  CodeBuildCredentials:
+    Type: AWS::CodeBuild::SourceCredential
+    Properties:
+      ServerType: GITHUB
+      AuthType: PERSONAL_ACCESS_TOKEN
+      Token: !Ref GitHubToken
+
   CodeBuildProject:
     Type: AWS::CodeBuild::Project
     Properties:
@@ -62,7 +69,7 @@ Resources:
         Type: GITHUB
         BuildSpec: "buildspec.yml"
         Auth:
-          Resource: !Ref GitHubToken
+          Resource: !Ref CodeBuildCredentials
           Type: OAUTH
       Triggers:
         Webhook: true
@@ -76,6 +83,7 @@ Resources:
           - LOCAL_DOCKER_LAYER_CACHE
           - LOCAL_CUSTOM_CACHE
         Type: LOCAL
+    DependsOn: CodeBuildCredentials
 
   WebBucket:
     Type: "AWS::S3::Bucket"
