@@ -29,7 +29,7 @@ const items = [{
 }];
 
 function Home() {
-  const containerProps = { style: { background: 'black' } };
+  const containerProps = { style: { background: 'white' } };
   const footerProps = { items };
   return (
     <Page containerProps={containerProps} footerProps={footerProps}>

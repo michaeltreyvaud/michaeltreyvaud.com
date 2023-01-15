@@ -24,7 +24,7 @@ LinkedIn.propTypes = {
 LinkedIn.defaultProps = {
   width: 25,
   height: 25,
-  fill: 'white',
+  fill: '#888888',
 };
 
 export default LinkedIn;

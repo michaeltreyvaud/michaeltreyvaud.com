@@ -13,7 +13,7 @@
 
 .item {
   display: flex;
-  color: white;
+  color: #888888;
   font-family: ColfaxAI,Helvetica,sans-serif;
   font-size: .8333333333rem;
 }
