@@ -7,13 +7,6 @@
 .items {
   display: flex;
   flex: 1;
-  justify-content: space-between;
+  flex-direction: row-reverse;
   list-style-type: none;
-}
-
-.item {
-  display: flex;
-  color: white;
-  font-family: ColfaxAI,Helvetica,sans-serif;
-  font-size: .8333333333rem;
 }

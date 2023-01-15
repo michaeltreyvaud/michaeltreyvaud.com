@@ -6,15 +6,17 @@ import Footer from '../Footer';
 
 import styles from './Page.module.css';
 
-function Page({ children }) {
+function Page({ children, footerProps, containerProps }) {
+  const containerStyle = containerProps?.style || {};
+  const footerItems = footerProps?.items || [];
   return (
-    <div className={styles.container}>
+    <div className={styles.container} style={containerStyle}>
       <div className={styles.pageContainer}>
         <Header />
         <div className={styles.content}>
           {children}
         </div>
-        <Footer />
+        <Footer items={footerItems} />
       </div>
     </div>
   );
@@ -22,10 +24,14 @@ function Page({ children }) {
 
 Page.propTypes = {
   children: PropTypes.node,
+  footerProps: PropTypes.object,
+  containerProps: PropTypes.object,
 };
 
 Page.defaultProps = {
   children: null,
+  footerProps: {},
+  containerProps: {},
 };
 
 export default Page;

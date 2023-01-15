@@ -1,35 +1,27 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
+import Item from './Item';
 import styles from './Footer.module.css';
 
-const items = [{
-  key: 'itemone',
-  text: 'One',
-}, {
-  key: 'itemtwo',
-  text: 'Two',
-}, {
-  key: 'itemthree',
-  text: 'Three',
-}, {
-  key: 'itemfour',
-  text: 'Four',
-}, {
-  key: 'itemfive',
-  text: 'Five',
-}, {
-  key: 'itemsix',
-  text: 'Six',
-}];
-
-function Footer() {
+function Footer({ items }) {
   return (
     <div className={styles.container}>
       <ul className={styles.items}>
-        {items.map((_item) => <li className={styles.item} key={_item.key}>{_item.text}</li>)}
+        {items.reverse().map((_item) => (
+          <Item key={_item.key} text={_item.text} icon={_item.icon} />
+        ))}
       </ul>
     </div>
   );
 }
+
+Footer.propTypes = {
+  items: PropTypes.array,
+};
+
+Footer.defaultProps = {
+  items: [],
+};
 
 export default Footer;
