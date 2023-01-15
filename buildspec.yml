@@ -1,0 +1,24 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: latest
+    commands:
+      - echo Entered the INSTALL phase ....
+      - cd $CODEBUILD_SRC_DIR
+      - npm install
+    finally:
+      - echo INSTALL done
+  build:
+    commands:
+      - echo Entered the BUILD phase ...
+      - echo Build started on `date`
+      - cd $CODEBUILD_SRC_DIR
+      - npm run build
+    finally:
+      - echo BUILD done
+  post_build:
+    commands:
+      - aws s3 sync --delete build/ "s3://$BUCKET"
+      - aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths '/*'
