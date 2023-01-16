@@ -3,10 +3,11 @@
   color: white;
   justify-content: center;
   align-items: center;
-  background-color: #EFEFF0;
   border-radius: 24px;
   padding: 24px;
   width: 600px;
+  border-bottom: 4px solid #EFEFF0;
+  border-right: 1px solid #EFEFF0;
 }
 
 .introduction {

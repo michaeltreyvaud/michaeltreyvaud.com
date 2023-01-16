@@ -2,31 +2,12 @@ import React from 'react';
 
 import profileImage from '../../Images/profile_image_500_500.jpg';
 import Page from '../../Components/Page';
-import IconLink from '../../Components/IconLink';
+import List from '../../Components/List';
 
-import AWSIcon from '../../Icons/AWS';
-import ReactIcon from '../../Icons/React';
-import GitHubIcon from '../../Icons/GitHub';
-import LinkedInIcon from '../../Icons/LinkedIn';
+import competencies from './competencies';
+import items from './footerItems';
+
 import styles from './Home.module.css';
-
-const items = [{
-  key: 'itemone',
-  text: 'Built using',
-  icon: <ReactIcon />,
-}, {
-  key: 'itemtwo',
-  text: 'Powered by',
-  icon: <AWSIcon />,
-}, {
-  key: 'itemthree',
-  text: 'View Source',
-  icon: <IconLink icon={<GitHubIcon />} link="https://github.com/michaeltreyvaud/michaeltreyvaud.com" />,
-}, {
-  key: 'itemfour',
-  text: 'Experience',
-  icon: <IconLink icon={<LinkedInIcon />} link="https://www.linkedin.com/in/michael-treyvaud-00b00196/" />,
-}];
 
 function Home() {
   const containerProps = { style: { background: 'white' } };
@@ -47,6 +28,7 @@ function Home() {
           />
         </div>
       </div>
+      <List items={competencies} title="Competencies" />
     </Page>
   );
 }
