@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 function GitHub({ width, height, fill }) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" width={width} height={height}>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" width={width} height={height} data-testid="Icons-GitHub">
       <path
         fill={fill}
         d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7

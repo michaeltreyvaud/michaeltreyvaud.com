@@ -7,6 +7,7 @@ function IconLink({ icon, link }) {
       href={link}
       target="_blank"
       rel="noreferrer"
+      data-testid="Components-IconLink-Container"
     >
       {icon}
     </a>

@@ -24,7 +24,7 @@ const items = [{
 
 function Header() {
   return (
-    <div className={styles.container}>
+    <div className={styles.container} data-testid="Components-Header-Container">
       <ul className={styles.items}>
         {items.map((_item) => <li className={styles.item} key={_item.key}>{_item.text}</li>)}
       </ul>

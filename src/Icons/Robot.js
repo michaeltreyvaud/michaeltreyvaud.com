@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 function Robot({ width, height, fill }) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width={width} height={height}>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width={width} height={height} data-testid="Icons-Robot">
       <path
         fill={fill}
         d="M320 0c17.7 0 32 14.3 32 32V96H480c35.3 0 64 28.7 64 64V448c0 35.3-28.7 64-64 64H160c-35.3 0-64-28.7-64-64V160c0-35.3 28.7-64 64-64H288V32c0-17.7

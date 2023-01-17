@@ -5,10 +5,12 @@ import ServerIcon from '../../Icons/Server';
 import WebIcon from '../../Icons/Web';
 import MobileIcon from '../../Icons/Mobile';
 import RobotIcon from '../../Icons/Robot';
+import Gears from '../../Icons/Gears';
 
 const competencies = [{
   text: 'Cloud',
-  icon: <CloudIcon />,
+  icon: <CloudIcon fill="white" />,
+  iconBackgroundColor: '#E16BE0',
   items: [{
     text: 'AWS',
   }, {
@@ -86,7 +88,8 @@ const competencies = [{
   }],
 }, {
   text: 'Server',
-  icon: <ServerIcon />,
+  icon: <ServerIcon fill="white" />,
+  iconBackgroundColor: '#F4B151',
   items: [{
     text: 'Node',
   }, {
@@ -98,7 +101,8 @@ const competencies = [{
   }],
 }, {
   text: 'Web',
-  icon: <WebIcon />,
+  iconBackgroundColor: '#EF4146',
+  icon: <WebIcon fill="white" />,
   items: [{
     text: 'Javascript',
   }, {
@@ -114,7 +118,8 @@ const competencies = [{
   }],
 }, {
   text: 'Mobile',
-  icon: <MobileIcon />,
+  icon: <MobileIcon fill="white" />,
+  iconBackgroundColor: '#8753E0',
   items: [{
     text: 'React Native',
   }, {
@@ -128,7 +133,8 @@ const competencies = [{
   }],
 }, {
   text: 'AI / ML',
-  icon: <RobotIcon />,
+  icon: <RobotIcon fill="white" />,
+  iconBackgroundColor: '#31C58E',
   items: [{
     text: 'Tensorflow',
   }, {
@@ -137,6 +143,25 @@ const competencies = [{
     text: 'Dialog Flow',
   }, {
     text: 'Watson',
+  }, {
+    text: 'more...',
+  }],
+}, {
+  text: 'General',
+  icon: <Gears fill="white" />,
+  iconBackgroundColor: '#888888',
+  items: [{
+    text: 'System Architecture',
+  }, {
+    text: 'UI/UX',
+  }, {
+    text: 'CI/CD/Devops',
+  }, {
+    text: 'Performance Engineering',
+  }, {
+    text: 'Testing',
+  }, {
+    text: 'Agile Development',
   }, {
     text: 'more...',
   }],

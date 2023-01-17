@@ -6,7 +6,7 @@ import styles from './Footer.module.css';
 
 function Footer({ items }) {
   return (
-    <div className={styles.container}>
+    <div className={styles.container} data-testid="Components-Footer-Container">
       <ul className={styles.items}>
         {items.reverse().map((_item) => (
           <Item key={_item.key} text={_item.text} icon={_item.icon} />
@@ -17,7 +17,11 @@ function Footer({ items }) {
 }
 
 Footer.propTypes = {
-  items: PropTypes.array,
+  items: PropTypes.arrayOf(PropTypes.shape({
+    key: PropTypes.string,
+    text: PropTypes.string,
+    icon: PropTypes.node,
+  })),
 };
 
 Footer.defaultProps = {

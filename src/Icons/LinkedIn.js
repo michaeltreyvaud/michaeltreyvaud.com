@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 function LinkedIn({ width, height, fill }) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width={width} height={height}>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width={width} height={height} data-testid="Icons-LinkedIn">
       <path
         fill={fill}
         d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4

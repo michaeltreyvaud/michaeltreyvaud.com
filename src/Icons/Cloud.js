@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 function Cloud({ width, height, fill }) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width={width} height={height}>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width={width} height={height} data-testid="Icons-Cloud">
       <path
         fill={fill}
         d="M0 336c0 79.5 64.5 144 144 144H512c70.7 0 128-57.3 128-128c0-61.9-44-113.6-102.4-125.4c4.1-10.7

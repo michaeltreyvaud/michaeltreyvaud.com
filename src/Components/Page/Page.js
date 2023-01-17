@@ -10,7 +10,7 @@ function Page({ children, footerProps, containerProps }) {
   const containerStyle = containerProps?.style || {};
   const footerItems = footerProps?.items || [];
   return (
-    <div className={styles.container} style={containerStyle}>
+    <div className={styles.container} style={containerStyle} data-testid="Components-Page-Container">
       <div className={styles.pageContainer}>
         <Header />
         <div className={styles.content}>
@@ -24,8 +24,18 @@ function Page({ children, footerProps, containerProps }) {
 
 Page.propTypes = {
   children: PropTypes.node,
-  footerProps: PropTypes.object,
-  containerProps: PropTypes.object,
+  footerProps: PropTypes.shape({
+    items: PropTypes.arrayOf(PropTypes.shape({
+      key: PropTypes.string,
+      text: PropTypes.string,
+      icon: PropTypes.node,
+    })),
+  }),
+  containerProps: PropTypes.shape({
+    style: PropTypes.shape({
+      backgroundColor: PropTypes.string,
+    }),
+  }),
 };
 
 Page.defaultProps = {

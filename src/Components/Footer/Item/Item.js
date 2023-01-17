@@ -5,7 +5,7 @@ import styles from './Item.module.css';
 
 function Item({ text, icon }) {
   return (
-    <li className={styles.item}>
+    <li className={styles.item} data-testid="Components-Footer-Item-Container">
       <span className={styles.itemText}>
         {text}
       </span>

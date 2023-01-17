@@ -14,7 +14,7 @@ function Home() {
   const footerProps = { items };
   return (
     <Page containerProps={containerProps} footerProps={footerProps}>
-      <div className={styles.content}>
+      <div className={styles.content} data-testid="Home-View-Container">
         <div className={styles.introduction}>
           <h1>Hi &#128075;</h1>
           <h3>I am Michael Treyvaud</h3>

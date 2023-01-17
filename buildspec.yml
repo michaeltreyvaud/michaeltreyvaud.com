@@ -15,6 +15,8 @@ phases:
       - echo Entered the BUILD phase ...
       - echo Build started on `date`
       - cd $CODEBUILD_SRC_DIR
+      - npm run lint
+      - npm run test
       - npm run build
     finally:
       - echo BUILD done

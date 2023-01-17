@@ -20,45 +20,42 @@
 .listItem {
   display: flex;
   flex-direction: column;
-  color: #888888;
-  font-family: ColfaxAI,Helvetica,sans-serif;
   justify-content: center;
   margin-top: 12px;
   padding: 12px;
   border-bottom: 1px solid#EFEFF0;
+}
+
+.listItemButton {
+  outline: none;
+  background-color: transparent;
+  border: none;
   cursor: pointer;
+  color: #888888;
+  font-family: ColfaxAI,Helvetica,sans-serif;
+  padding: 0px;
+  margin: 0px;
 }
 
 .textContainer {
   display: flex;
+  align-items: center;
+}
+
+.icon {
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
 }
 
 .text {
   display: flex;
   flex: 1;
   margin-left: 8px;
-}
-
-.subListContainer {
-  display: flex;
-  flex: 1;
-  margin-top: 12px;
-}
-
-.subListTitle {
   color: #888888;
   font-family: ColfaxAI,Helvetica,sans-serif;
-}
-
-.subList {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0px;
-}
-
-.subListItem {
-  display: flex;
-  color: #888888;
-  font-family: ColfaxAI,Helvetica,sans-serif;
-  margin-right: 16px;
+  font-size: 16px;
 }
