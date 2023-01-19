@@ -153,15 +153,19 @@ const competencies = [{
   items: [{
     text: 'System Architecture',
   }, {
-    text: 'UI/UX',
+    text: 'User Experience',
   }, {
-    text: 'CI/CD/Devops',
+    text: 'Devops',
   }, {
     text: 'Performance Engineering',
   }, {
     text: 'Testing',
   }, {
     text: 'Agile Development',
+  }, {
+    text: 'Security',
+  }, {
+    text: 'Micro Services',
   }, {
     text: 'more...',
   }],

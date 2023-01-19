@@ -15,4 +15,18 @@
   color: #888888;
   font-family: ColfaxAI,Helvetica,sans-serif;
   font-size: .8333333333rem;
+  font-weight: 600;
+}
+
+.link {
+  text-decoration: none;
+  color: #888888;
+}
+
+.link:hover {
+  color: hotpink !important;
+}
+
+.link:visited {
+  color: #888888;
 }
