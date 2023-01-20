@@ -4,16 +4,9 @@ import { ReactInteractiveMessenger } from '@hypermediocrity/alpha-interactve-mes
 import { MessengerThemeContext } from './Context/MessengerTheme';
 
 function MessengerLoader() {
-  const { theme } = useContext(MessengerThemeContext);
-  const headerOptions = {
-    title: "Mike's Messenger",
-    subTitle: 'Give me a try!',
-    avatar: 'https://www.svgrepo.com/show/57853/avatar.svg',
-    closeIcon: 'https://icons.veryicon.com/png/o/miscellaneous/kqt/close-116.png',
-  };
-  const launcherOptions = {
-    icon: 'https://cdn-icons-png.flaticon.com/512/2068/2068998.png',
-  };
+  const {
+    theme, headerOptions, launcherOptions, textAreaOptions,
+  } = useContext(MessengerThemeContext);
   const welcomeMessages = ['Hello! 👋', "Welcome to Mike's home page"];
   const messages = [{
     type: 'text',
@@ -44,6 +37,7 @@ function MessengerLoader() {
       headerOptions={headerOptions}
       launcherOptions={launcherOptions}
       welcomeMessages={welcomeMessages}
+      textAreaOptions={textAreaOptions}
       messages={messages}
     />
   );

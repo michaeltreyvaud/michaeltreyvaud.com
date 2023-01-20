@@ -10,12 +10,26 @@ import { MessengerThemeContext } from '../../Context/MessengerTheme';
 * initalized here just for convenience
 */
 function EditorLoader({ editorRef }) {
-  const { setTheme } = useContext(MessengerThemeContext);
+  const {
+    setTheme,
+    headerOptions,
+    setHeaderOptions,
+    launcherOptions,
+    setLauncherOptions,
+    textAreaOptions,
+    setTextAreaOptions,
+  } = useContext(MessengerThemeContext);
   React.useEffect(() => {
     if (window.ReactLiveChatEditor) {
       window.ReactLiveChatEditor({
         element: editorRef.current,
         onUpdateTheme: setTheme,
+        headerOptions,
+        onUpdateHeader: setHeaderOptions,
+        launcherOptions,
+        onUpdateLauncher: setLauncherOptions,
+        textAreaOptions,
+        onUpdateTextArea: setTextAreaOptions,
       });
     }
   }, []);

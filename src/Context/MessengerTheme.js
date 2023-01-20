@@ -45,9 +45,35 @@ export function MessengerThemeProvider({ children }) {
       },
     },
   });
+  const [headerOptions, setHeaderOptions] = useState({
+    title: "Mike's Messenger",
+    subTitle: 'Give me a try!',
+    avatar: 'https://www.svgrepo.com/show/57853/avatar.svg',
+    closeIcon: 'https://icons.veryicon.com/png/o/miscellaneous/kqt/close-116.png',
+  });
+  const [launcherOptions, setLauncherOptions] = useState({
+    icon: 'https://cdn-icons-png.flaticon.com/512/2068/2068998.png',
+  });
+  const [textAreaOptions, setTextAreaOptions] = useState({
+    placeholder: 'Type Something',
+  });
   const value = useMemo(() => ({
-    theme, setTheme,
-  }), [theme, setTheme]);
+    theme,
+    setTheme,
+    headerOptions,
+    setHeaderOptions,
+    launcherOptions,
+    setLauncherOptions,
+    textAreaOptions,
+    setTextAreaOptions,
+  }), [theme,
+    setTheme,
+    headerOptions,
+    setHeaderOptions,
+    launcherOptions,
+    setLauncherOptions,
+    textAreaOptions,
+    setTextAreaOptions]);
   return (
     <MessengerThemeContext.Provider value={value}>
       {children}
