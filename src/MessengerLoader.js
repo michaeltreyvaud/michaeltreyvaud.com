@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
-import { ReactInteractiveMessenger } from '@hypermediocrity/alpha-interactve-messenger';
+import { ReactNLPMessenger } from '@hypermediocrity/alpha-nlp-messenger';
 
 import { MessengerThemeContext } from './Context/MessengerTheme';
+import testCorpus from './testCorpus.json';
 
 function MessengerLoader() {
   const {
@@ -22,23 +23,22 @@ function MessengerLoader() {
     position: 'left',
   }, {
     type: 'text',
-    content: `This live chat widget is easily embeddable into your own homepage,
-  and construction is underway to integrate with tensorflow JS on the client
-  - so you can train / test / validate / inference NLP models on the client, no server needed`,
+    content: 'I have integrated this widget with nlp.js, so you can build / train / test and inference against my model all in the browser.',
     position: 'left',
   }, {
     type: 'text',
-    content: 'For the moment, you can check out the showcase on the top left to view my customization options',
+    content: 'Give it a try, start by saying hello!',
     position: 'left',
   }];
   return (
-    <ReactInteractiveMessenger
+    <ReactNLPMessenger
       theme={theme}
       headerOptions={headerOptions}
       launcherOptions={launcherOptions}
       welcomeMessages={welcomeMessages}
       textAreaOptions={textAreaOptions}
       messages={messages}
+      corpus={testCorpus}
     />
   );
 }
