@@ -2,12 +2,13 @@ import React, { useContext } from 'react';
 import { ReactNLPMessenger } from '@hypermediocrity/alpha-nlp-messenger';
 
 import { MessengerThemeContext } from './Context/MessengerTheme';
-import testCorpus from './testCorpus.json';
+import { CorpusContext } from './Context/Corpus';
 
 function MessengerLoader() {
   const {
     theme, headerOptions, launcherOptions, textAreaOptions,
   } = useContext(MessengerThemeContext);
+  const { corpus } = useContext(CorpusContext);
   const welcomeMessages = ['Hello! 👋', "Welcome to Mike's home page"];
   const messages = [{
     type: 'text',
@@ -19,11 +20,15 @@ function MessengerLoader() {
     position: 'left',
   }, {
     type: 'text',
-    content: 'Everything you see here is hand crafted, and fully customizable',
+    content: 'Everything you see here is hand crafted, and fully customizable!',
     position: 'left',
   }, {
     type: 'text',
-    content: 'I have integrated this widget with nlp.js, so you can build / train / test and inference against my model all in the browser.',
+    content: 'Edit the style of this chat widget in the Live Chat Designer',
+    position: 'left',
+  }, {
+    type: 'text',
+    content: 'Edit NLP intents in the NLP Editor',
     position: 'left',
   }, {
     type: 'text',
@@ -38,7 +43,7 @@ function MessengerLoader() {
       welcomeMessages={welcomeMessages}
       textAreaOptions={textAreaOptions}
       messages={messages}
-      corpus={testCorpus}
+      corpus={corpus}
     />
   );
 }

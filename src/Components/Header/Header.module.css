@@ -14,8 +14,9 @@
   display: flex;
   color: #888888;
   font-family: ColfaxAI,Helvetica,sans-serif;
-  font-size: .8333333333rem;
+  font-size: 18px;
   font-weight: 600;
+  margin-right: 32px;
 }
 
 .link {
