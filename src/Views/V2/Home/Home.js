@@ -1,5 +1,10 @@
 import React from 'react';
-import { Container, Title, Accordion } from '@mantine/core';
+import {
+  Container,
+  Title,
+  Accordion,
+  Space,
+} from '@mantine/core';
 
 import Banner from './Banner';
 import useStyles from './Home.styles';
@@ -8,15 +13,29 @@ import competencies from '../../Home/competencies';
 function Home() {
   const { classes } = useStyles();
   return (
-    <Container size="sm" className={classes.wrapper}>
+    <Container size="sm" className={classes.container}>
       <Banner />
-      <Title align="center" className={classes.title}>
+      <Space h="md" />
+      <Title align="center" order={3}>
         Competencies
       </Title>
+      <Space h="md" />
       <Accordion variant="separated">
         {competencies.map((_compentency) => (
           <Accordion.Item className={classes.item} value={_compentency.text}>
-            <Accordion.Control>{_compentency.text}</Accordion.Control>
+            <Accordion.Control>
+              <div className={classes.control}>
+                <div
+                  className={classes.icon}
+                  style={{ backgroundColor: _compentency?.iconBackgroundColor }}
+                >
+                  {_compentency?.icon}
+                </div>
+                <div className={classes.controlText}>
+                  {_compentency.text}
+                </div>
+              </div>
+            </Accordion.Control>
             <Accordion.Panel>
               {_compentency
                 .items

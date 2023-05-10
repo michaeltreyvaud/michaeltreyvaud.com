@@ -7,10 +7,11 @@ import {
   Group,
   Burger,
   rem,
+  Avatar,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 
-import REMOVEME from '../../../Icons/AWS';
+import profileImage from '../../../Images/profile_image_500_500.jpg';
 import { ROUTE_V2_HOME, ROUTE_V2_NLP, ROUTE_V2_SHOWCASE } from '../../../routes';
 
 const useStyles = createStyles((theme) => ({
@@ -94,7 +95,7 @@ function Header() {
   return (
     <MantineHeader height={60} mb={120}>
       <Container className={classes.header}>
-        <REMOVEME />
+        <Avatar src={profileImage} />
         <Group spacing={5} className={classes.links}>
           {items}
         </Group>
