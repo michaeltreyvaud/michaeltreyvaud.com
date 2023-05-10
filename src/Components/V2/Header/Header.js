@@ -1,84 +1,25 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import {
-  createStyles,
   Header as MantineHeader,
   Container,
   Group,
   Burger,
-  rem,
   Avatar,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 
 import profileImage from '../../../Images/profile_image_500_500.jpg';
-import { ROUTE_V2_HOME, ROUTE_V2_NLP, ROUTE_V2_SHOWCASE } from '../../../routes';
+import useStyles from './Header.style';
 
-const useStyles = createStyles((theme) => ({
-  header: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    height: '100%',
-  },
-
-  links: {
-    [theme.fn.smallerThan('xs')]: {
-      display: 'none',
-    },
-  },
-
-  burger: {
-    [theme.fn.largerThan('xs')]: {
-      display: 'none',
-    },
-  },
-
-  link: {
-    display: 'block',
-    lineHeight: 1,
-    padding: `${rem(8)} ${rem(12)}`,
-    borderRadius: theme.radius.sm,
-    textDecoration: 'none',
-    color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],
-    fontSize: theme.fontSizes.sm,
-    fontWeight: 500,
-
-    '&:hover': {
-      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
-    },
-  },
-
-  linkActive: {
-    '&, &:hover': {
-      backgroundColor: theme.fn.variant({ variant: 'light', color: theme.primaryColor }).background,
-      color: theme.fn.variant({ variant: 'light', color: theme.primaryColor }).color,
-    },
-  },
-}));
-
-const links = [
-  {
-    link: ROUTE_V2_HOME,
-    label: 'Home',
-  },
-  {
-    link: ROUTE_V2_SHOWCASE,
-    label: 'Live Chat Designer',
-  },
-  {
-    link: ROUTE_V2_NLP,
-    label: 'Editor',
-  },
-];
-
-function Header() {
+function Header({ navigationLinks }) {
   const navigate = useNavigate();
   const [opened, { toggle }] = useDisclosure(false);
-  const [active, setActive] = useState(links[0].link);
+  const [active, setActive] = useState(navigationLinks[0].link);
   const { classes, cx } = useStyles();
 
-  const items = links.map((link) => (
+  const items = navigationLinks.map((link) => (
     <a
       key={link.label}
       href={link.link}
@@ -104,5 +45,16 @@ function Header() {
     </MantineHeader>
   );
 }
+
+Header.propTypes = {
+  navigationLinks: PropTypes.arrayOf(PropTypes.shape({
+    link: PropTypes.string,
+    label: PropTypes.string,
+  })),
+};
+
+Header.defaultProps = {
+  navigationLinks: [],
+};
 
 export default Header;
