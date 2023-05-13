@@ -17,7 +17,7 @@ const links = [
   },
   {
     link: ROUTE_V2_NLP,
-    label: 'Editor',
+    label: 'NLP Editor',
   },
 ];
 
