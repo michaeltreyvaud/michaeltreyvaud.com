@@ -7,6 +7,7 @@ import {
   Group,
   Flex,
   Text,
+  Tooltip,
 } from '@mantine/core';
 import { Plus, Trash } from 'tabler-icons-react';
 import useStyles from './Intents.styles';
@@ -19,9 +20,11 @@ function Intents({
     <Flex direction="column">
       <Group>
         <Title order={4}>Intents</Title>
-        <ActionIcon>
-          <Plus size="1.125rem" color="#FF8AAE" />
-        </ActionIcon>
+        <Tooltip label="Add Intent">
+          <ActionIcon>
+            <Plus size="1.125rem" color="#FF8AAE" />
+          </ActionIcon>
+        </Tooltip>
       </Group>
       <Flex
         direction="column"
@@ -35,9 +38,11 @@ function Intents({
           >
             <Text fz="md" className={classes.intentText}>{_intent?.intent}</Text>
             {selectedIntent === _idx && (
-              <ActionIcon onClick={() => onDelete(_idx)} className={classes.deleteIntent}>
-                <Trash size="1.125rem" color="#FF8AAE" />
-              </ActionIcon>
+              <Tooltip label="Remove Intent">
+                <ActionIcon onClick={() => onDelete(_idx)} className={classes.deleteIntent}>
+                  <Trash size="1.125rem" color="#FF8AAE" />
+                </ActionIcon>
+              </Tooltip>
             )}
           </Group>
         ))}

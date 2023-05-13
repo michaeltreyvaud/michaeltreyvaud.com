@@ -8,6 +8,12 @@ const styles = createStyles(() => ({
       color: '#FF8AAE',
     },
   },
+  deleteUtterance: {
+    backgroundColor: 'white',
+    '&:hover': {
+      backgroundColor: 'white',
+    },
+  },
 }));
 
 export default styles;
