@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate, useLocation } from 'react-router-dom';
 import {
@@ -7,8 +7,11 @@ import {
   Group,
   Burger,
   Avatar,
+  Text,
+  Transition,
+  Paper,
 } from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
+import { useDisclosure, useClickOutside } from '@mantine/hooks';
 
 import profileImage from '../../../Images/profile_image_500_500.jpg';
 import useStyles from './Header.style';
@@ -16,8 +19,15 @@ import useStyles from './Header.style';
 function Header({ navigationLinks }) {
   const navigate = useNavigate();
   const location = useLocation();
-  const [opened, { toggle }] = useDisclosure(false);
+  const [opened, { toggle, close }] = useDisclosure(false);
   const { classes, cx } = useStyles();
+
+  const handleClick = useCallback(() => {
+    if (opened) {
+      close();
+    }
+  }, [opened]);
+  const ref = useClickOutside(handleClick);
 
   const items = navigationLinks.map((link) => (
     <a
@@ -27,6 +37,7 @@ function Header({ navigationLinks }) {
       onClick={(event) => {
         event.preventDefault();
         navigate(link.link);
+        close();
       }}
     >
       {link.label}
@@ -34,12 +45,22 @@ function Header({ navigationLinks }) {
   ));
   return (
     <MantineHeader height={60} mb={120}>
-      <Container className={classes.header}>
-        <Avatar src={profileImage} />
+      <Container className={classes.header} ref={ref}>
+        <Group>
+          <Avatar src={profileImage} />
+          <Text fz="md">Michael Treyvaud</Text>
+        </Group>
         <Group spacing={5} className={classes.links}>
           {items}
         </Group>
         <Burger opened={opened} onClick={toggle} className={classes.burger} size="sm" />
+        <Transition transition="pop-top-right" duration={200} mounted={opened}>
+          {(styles) => (
+            <Paper className={classes.dropdown} withBorder style={styles}>
+              {items}
+            </Paper>
+          )}
+        </Transition>
       </Container>
     </MantineHeader>
   );
