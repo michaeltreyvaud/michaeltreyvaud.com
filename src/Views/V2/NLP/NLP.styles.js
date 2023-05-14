@@ -2,7 +2,6 @@ import { createStyles, rem } from '@mantine/core';
 
 const styles = createStyles((theme) => ({
   container: {
-    paddingTop: `calc(${theme.spacing.xl} * 2)`,
     paddingBottom: `calc(${theme.spacing.xl} * 2)`,
     minHeight: 650,
   },
