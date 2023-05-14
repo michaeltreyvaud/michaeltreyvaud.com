@@ -22,12 +22,12 @@ function Intent({ intent, onUpdate }) {
   return (
     <Flex direction="column">
       <Stack spacing="xl">
-        <Stack spacing={0}>
+        <Stack spacing={2}>
           <Group>
             <Title order={4}>Intent</Title>
           </Group>
           <Text fz="md">
-            Intents are composed of Utterances and Answers, you can configure these options below
+            Intents are composed of Utterances and Responses, you can configure these options below
           </Text>
           <TextInput
             label="Intent Name"
@@ -39,7 +39,7 @@ function Intent({ intent, onUpdate }) {
             })}
           />
         </Stack>
-        <Stack spacing={0}>
+        <Stack spacing={2}>
           <Group>
             <Title order={4}>Utterances</Title>
             <Tooltip label="Add Utterance">
@@ -56,8 +56,9 @@ function Intent({ intent, onUpdate }) {
           <Text fz="md">
             What user-typed sentences would you like to detect?
           </Text>
-          {utterances.map((_utt, _index) => (
+          {(utterances || []).map((_utt, _index) => (
             <TextInput
+              key={`utterance-${_index}`}
               label="Utterance"
               placeholder="User Utterance"
               value={_utt}
@@ -86,10 +87,10 @@ function Intent({ intent, onUpdate }) {
             />
           ))}
         </Stack>
-        <Stack spacing={0}>
+        <Stack spacing={2}>
           <Group>
-            <Title order={4}>Answers</Title>
-            <Tooltip label="Add Answer">
+            <Title order={4}>Responses</Title>
+            <Tooltip label="Add Response">
               <ActionIcon
                 onClick={() => onUpdate({
                   ...intent,
@@ -107,9 +108,10 @@ function Intent({ intent, onUpdate }) {
             const value = typeof _ans === 'string' ? _ans : _ans.answer;
             return (
               <TextInput
+                key={`answer-${_index}`}
                 value={value}
-                label="Model Response"
-                placeholder="Model Response"
+                label="Response"
+                placeholder="Response"
                 onChange={(e) => onUpdate({
                   ...intent,
                   answers: answers.map((_anss, _anssIdx) => {
@@ -120,7 +122,7 @@ function Intent({ intent, onUpdate }) {
                   }),
                 })}
                 rightSection={(
-                  <Tooltip label="Remove Answer">
+                  <Tooltip label="Remove Response">
                     <ActionIcon
                       className={classes.deleteUtterance}
                       onClick={() => onUpdate({
@@ -136,23 +138,17 @@ function Intent({ intent, onUpdate }) {
             );
           })}
         </Stack>
-        <Button className={classes.saveButton}>
-          Save
-        </Button>
       </Stack>
     </Flex>
   );
 }
 
 Intent.propTypes = {
-  intent: PropTypes.objectOf(PropTypes.shape({
-    answers: PropTypes.arrayOf(PropTypes.shape({
-      answer: PropTypes.string,
-      opts: PropTypes.string,
-    })),
+  intent: PropTypes.shape({
+    answers: PropTypes.arrayOf(PropTypes.string),
     intent: PropTypes.string,
     utterances: PropTypes.arrayOf(PropTypes.string),
-  })),
+  }),
   onUpdate: PropTypes.func,
 };
 

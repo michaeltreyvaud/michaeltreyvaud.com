@@ -13,7 +13,7 @@ import { Plus, Trash } from 'tabler-icons-react';
 import useStyles from './Intents.styles';
 
 function Intents({
-  intents, selectedIntent, onSelect, onDelete,
+  intents, selectedIntent, onSelect, onDelete, onAdd,
 }) {
   const { classes, cx } = useStyles();
   return (
@@ -21,7 +21,7 @@ function Intents({
       <Group>
         <Title order={4}>Intents</Title>
         <Tooltip label="Add Intent">
-          <ActionIcon>
+          <ActionIcon onClick={onAdd}>
             <Plus size="1.125rem" color="#FF8AAE" />
           </ActionIcon>
         </Tooltip>
@@ -32,7 +32,7 @@ function Intents({
       >
         {intents.map((_intent, _idx) => (
           <Group
-            key={_intent?.intent}
+            key={`intents-${_idx}`}
             className={cx(classes.intent, { [classes.activeIntent]: selectedIntent === _idx })}
             onClick={() => onSelect(_idx)}
           >
@@ -53,16 +53,14 @@ function Intents({
 
 Intents.propTypes = {
   intents: PropTypes.arrayOf(PropTypes.shape({
-    answers: PropTypes.arrayOf(PropTypes.shape({
-      answer: PropTypes.string,
-      opts: PropTypes.string,
-    })),
+    answers: PropTypes.arrayOf(PropTypes.string),
     intent: PropTypes.string,
     utterances: PropTypes.arrayOf(PropTypes.string),
   })),
   selectedIntent: PropTypes.number,
   onSelect: PropTypes.func,
   onDelete: PropTypes.func,
+  onAdd: PropTypes.func,
 };
 
 Intents.defaultProps = {
@@ -70,6 +68,7 @@ Intents.defaultProps = {
   selectedIntent: 0,
   onSelect: () => {},
   onDelete: () => {},
+  onAdd: () => {},
 };
 
 export default Intents;

@@ -33,26 +33,40 @@ function NLP() {
     });
     setIntents(updatedIntents);
   };
+  const addIntent = () => {
+    const updatedIntents = [{
+      intent: '',
+      utterances: [],
+      answers: [],
+    },
+    ...intents.map((_int) => _int)];
+    setIntents(updatedIntents);
+  };
   return (
     <Container size="xl" className={classes.container}>
-      <Grid>
+      <Grid gutter={5} gutterXs="md" gutterMd="xl" gutterXl={50}>
         <Grid.Col sm={12} md={12} lg={4} xl={4}>
           <Intents
             intents={intents}
             selectedIntent={selectedIntent}
             onSelect={selectIntent}
             onDelete={deleteIntent}
+            onAdd={addIntent}
           />
         </Grid.Col>
-        <Grid.Col sm={12} md={12} lg={4} xl={4}>
-          <Intent
-            intent={intents?.[selectedIntent] || {}}
-            onUpdate={(_val) => updateIntent(selectedIntent, _val)}
-          />
-        </Grid.Col>
-        <Grid.Col sm={12} md={12} lg={4} xl={4}>
-          <Model />
-        </Grid.Col>
+        {intents.length > 0 && (
+          <Grid.Col sm={12} md={12} lg={4} xl={4}>
+            <Intent
+              intent={intents?.[selectedIntent] || {}}
+              onUpdate={(_val) => updateIntent(selectedIntent, _val)}
+            />
+          </Grid.Col>
+        )}
+        {intents.length > 0 && (
+          <Grid.Col sm={12} md={12} lg={4} xl={4}>
+            <Model intents={intents} setCorpus={setCorpus} />
+          </Grid.Col>
+        )}
       </Grid>
     </Container>
   );

@@ -4,12 +4,14 @@ const styles = createStyles(() => ({
   intent: {
     minHeight: 32,
     justifyContent: 'space-between',
+    '&:hover': {
+      cursor: 'pointer',
+    },
   },
   intentText: {
     marginLeft: 4,
     '&:hover': {
       color: '#FF8AAE',
-      cursor: 'pointer',
     },
   },
   activeIntent: {

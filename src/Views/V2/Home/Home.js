@@ -22,7 +22,11 @@ function Home() {
       <Space h="md" />
       <Accordion variant="separated">
         {competencies.map((_compentency) => (
-          <Accordion.Item className={classes.item} value={_compentency.text}>
+          <Accordion.Item
+            className={classes.item}
+            value={_compentency.text}
+            key={_compentency.text}
+          >
             <Accordion.Control>
               <div className={classes.control}>
                 <div
