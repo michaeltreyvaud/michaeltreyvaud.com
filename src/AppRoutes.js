@@ -10,19 +10,20 @@ import {
   ROUTE_NLP,
 } from './routes';
 
-import Home from './Views/Home';
-import Showcase from './Views/Showcase';
-import NLP from './Views/NLP';
+import StandardLayout from './Layout/Standard';
+import Home from './Views/V2/Home';
+import NLP from './Views/V2/NLP';
+import Showcase from './Views/V2/Showcase';
 
 const AppRoutes = createBrowserRouter([{
   path: ROUTE_HOME,
-  element: <Home />,
+  element: <StandardLayout><Home /></StandardLayout>,
 }, {
   path: ROUTE_SHOWCASE,
-  element: <Showcase />,
+  element: <StandardLayout><Showcase /></StandardLayout>,
 }, {
   path: ROUTE_NLP,
-  element: <NLP />,
+  element: <StandardLayout><NLP /></StandardLayout>,
 }, {
   path: ROUTE_WILDCARD,
   element: <Navigate to={ROUTE_HOME} />,

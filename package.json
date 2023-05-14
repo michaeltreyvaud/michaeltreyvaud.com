@@ -8,7 +8,8 @@
     "build": "webpack --config webpack.prod.config.js --env mode=production",
     "lint": "eslint src",
     "test": "react-scripts test --coverage",
-    "test:ci": "react-scripts test --coverage --watchAll=false"
+    "test:ci": "react-scripts test --coverage --watchAll=false",
+    "depcheck": "depcheck"
   },
   "repository": {
     "type": "git",
@@ -30,6 +31,7 @@
     "@testing-library/react": "^13.4.0",
     "babel-loader": "^9.1.0",
     "css-loader": "^6.7.1",
+    "depcheck": "^1.4.3",
     "eslint": "^8.32.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.27.4",
@@ -45,10 +47,18 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.0",
     "@hypermediocrity/alpha-nlp-messenger": "^0.0.1",
+    "@mantine/core": "^6.0.10",
+    "@mantine/hooks": "^6.0.10",
+    "@mantine/notifications": "^6.0.10",
+    "@nlpjs/core": "^4.26.1",
+    "@nlpjs/lang-en-min": "^4.26.1",
+    "@nlpjs/nlp": "^4.26.1",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.4.3"
+    "react-router-dom": "^6.4.3",
+    "tabler-icons-react": "^1.56.0"
   }
 }

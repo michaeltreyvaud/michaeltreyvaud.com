@@ -21,5 +21,6 @@ module.exports = {
   rules: {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'jsx-a11y/control-has-associated-label': [0],
+    'react/no-array-index-key': [0],
   },
 };
