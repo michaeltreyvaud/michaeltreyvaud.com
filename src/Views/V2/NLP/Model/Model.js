@@ -39,9 +39,7 @@ function Model({ intents, setCorpus }) {
   };
 
   const test = async () => {
-    console.log(utterance);
     const res = await inference(nlp, utterance);
-    console.log(res);
     setResponse(res?.answers || []);
   };
   return (
@@ -64,7 +62,7 @@ function Model({ intents, setCorpus }) {
               <Title order={4}>Test Model</Title>
             </Group>
             <Text fz="md">
-              Test your trained model below
+              Test your trained model below or via the interactive messenger
             </Text>
             <TextInput
               label="Test Utterance"

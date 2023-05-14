@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 
 import {
   Container,
@@ -42,6 +42,15 @@ function NLP() {
     ...intents.map((_int) => _int)];
     setIntents(updatedIntents);
   };
+
+  useEffect(() => {
+    if (selectedIntent === intents.length) {
+      setSelectedIntent(selectedIntent - 1);
+    }
+    if (intents.length === 0) {
+      selectIntent(0);
+    }
+  }, [intents, selectedIntent]);
   return (
     <Container size="xl" className={classes.container}>
       <Grid gutter={5} gutterXs="md" gutterMd="xl" gutterXl={50}>

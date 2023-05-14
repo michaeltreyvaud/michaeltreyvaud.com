@@ -36,7 +36,7 @@ function Intents({
             className={cx(classes.intent, { [classes.activeIntent]: selectedIntent === _idx })}
             onClick={() => onSelect(_idx)}
           >
-            <Text fz="md" className={classes.intentText}>{_intent?.intent}</Text>
+            <Text fz="md" className={classes.intentText}>{_intent?.intent || 'Unnamed Intent'}</Text>
             {selectedIntent === _idx && (
               <Tooltip label="Remove Intent">
                 <ActionIcon onClick={() => onDelete(_idx)} className={classes.deleteIntent}>
