@@ -4,19 +4,19 @@ import PropTypes from 'prop-types';
 import { AppShell } from '@mantine/core';
 
 import Header from '../../Components/V2/Header';
-import { ROUTE_V2_HOME, ROUTE_V2_NLP, ROUTE_V2_SHOWCASE } from '../../routes';
+import { ROUTE_HOME, ROUTE_NLP, ROUTE_SHOWCASE } from '../../routes';
 
 const links = [
   {
-    link: ROUTE_V2_HOME,
+    link: ROUTE_HOME,
     label: 'Home',
   },
   {
-    link: ROUTE_V2_SHOWCASE,
+    link: ROUTE_SHOWCASE,
     label: 'Live Chat Designer',
   },
   {
-    link: ROUTE_V2_NLP,
+    link: ROUTE_NLP,
     label: 'NLP Editor',
   },
 ];
