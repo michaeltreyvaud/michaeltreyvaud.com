@@ -10,6 +10,7 @@ import {
   TextInput,
   Button,
 } from '@mantine/core';
+import { notifications } from '@mantine/notifications';
 
 import { buildModel, inference } from '../../../../lib/nlp';
 import useStyles from './Model.styles';
@@ -35,6 +36,12 @@ function Model({ intents, setCorpus }) {
       setNlp(model);
       setTraining(false);
       setCorpus(modelData);
+      notifications.show({
+        title: 'Success',
+        message: 'Model successfully trained',
+        autoClose: 3000,
+        color: 'teal',
+      });
     }
   };
 

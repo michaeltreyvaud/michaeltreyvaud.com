@@ -51,6 +51,7 @@
     "@hypermediocrity/alpha-nlp-messenger": "^0.0.1",
     "@mantine/core": "^6.0.10",
     "@mantine/hooks": "^6.0.10",
+    "@mantine/notifications": "^6.0.10",
     "@nlpjs/core": "^4.26.1",
     "@nlpjs/lang-en-min": "^4.26.1",
     "@nlpjs/nlp": "^4.26.1",

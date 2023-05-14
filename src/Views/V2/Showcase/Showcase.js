@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useRef } from 'react';
+
+import EditorLoader from '../../Showcase/EditorLoader';
 
 function Showcase() {
-  return <div>Showcase v2</div>;
+  const editorRef = useRef();
+  return (
+    <>
+      <div ref={editorRef} />
+      <EditorLoader editorRef={editorRef} />
+    </>
+  );
 }
 
 export default Showcase;
