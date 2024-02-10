@@ -22,11 +22,6 @@ function Banner() {
               Software Generalist, AWS expert and AI enthusiast
             </Text>
           </Group>
-          <Group noWrap spacing={10} mt={5}>
-            <Text fz="xs" c="dimmed">
-              michael.treyvaud@gmail.com
-            </Text>
-          </Group>
         </div>
       </Group>
     </div>
