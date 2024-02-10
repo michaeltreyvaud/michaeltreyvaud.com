@@ -12,17 +12,16 @@ jobs:
   Merge-Main:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Node environment
         uses: actions/setup-node@v3
         with:
           node-version: '18.x'
-        - run: npm ci
-        - run: npm run lint
-        - run: npm run test:ci
-        - run: npm run build
+        run: npm ci
+        run: npm run lint
+        run: npm run test:ci
+        run: npm run build
       # - name: Configure AWS credentials
       #   uses: aws-actions/configure-aws-credentials@v2
       #   with:
