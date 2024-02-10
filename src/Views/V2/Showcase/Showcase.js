@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 
 import { Container } from '@mantine/core';
 
-import EditorLoader from '../../Showcase/EditorLoader';
+import EditorLoader from './EditorLoader';
 import useStyles from './Showcase.styles';
 
 function Showcase() {

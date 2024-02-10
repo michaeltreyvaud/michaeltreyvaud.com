@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
-import { MessengerThemeContext } from '../../Context/MessengerTheme';
+import { MessengerThemeContext } from '../../../Context/MessengerTheme';
 
 /*
 * QFix until editor is released publically on npm

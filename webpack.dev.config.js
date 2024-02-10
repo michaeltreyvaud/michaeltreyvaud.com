@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const DeadCodePlugin = require('webpack-deadcode-plugin');
 
 module.exports = {
   mode: 'development',
@@ -43,6 +44,19 @@ module.exports = {
     ],
   },
   plugins: [
+    new DeadCodePlugin({
+      patterns: [
+        'src/**/*.(js|jsx|css)',
+      ],
+      exclude: [
+        'src/**/*.(test.js|test.jsx)',
+        '**/public/**/*',
+        '**/infrastructure/**/*',
+        '**/dist/**/*',
+        '**/coverage/**/*',
+        '**/node_modules/**',
+      ],
+    }),
     new HtmlWebpackPlugin({
       template: 'public/index.html',
       favicon: 'public/favicon.ico',

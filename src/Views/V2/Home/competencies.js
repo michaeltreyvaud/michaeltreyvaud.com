@@ -1,11 +1,11 @@
 import React from 'react';
 
-import CloudIcon from '../../Icons/Cloud';
-import ServerIcon from '../../Icons/Server';
-import WebIcon from '../../Icons/Web';
-import MobileIcon from '../../Icons/Mobile';
-import RobotIcon from '../../Icons/Robot';
-import Gears from '../../Icons/Gears';
+import CloudIcon from '../../../Icons/Cloud';
+import ServerIcon from '../../../Icons/Server';
+import WebIcon from '../../../Icons/Web';
+import MobileIcon from '../../../Icons/Mobile';
+import RobotIcon from '../../../Icons/Robot';
+import Gears from '../../../Icons/Gears';
 
 const competencies = [{
   text: 'Cloud',

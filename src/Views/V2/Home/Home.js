@@ -8,7 +8,7 @@ import {
 
 import Banner from './Banner';
 import useStyles from './Home.styles';
-import competencies from '../../Home/competencies';
+import competencies from './competencies';
 
 function Home() {
   const { classes } = useStyles();
