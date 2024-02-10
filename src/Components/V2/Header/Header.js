@@ -6,14 +6,11 @@ import {
   Container,
   Group,
   Burger,
-  Avatar,
   Text,
   Transition,
   Paper,
 } from '@mantine/core';
 import { useDisclosure, useClickOutside } from '@mantine/hooks';
-
-import profileImage from '../../../Images/profile_image_500_500.jpg';
 import useStyles from './Header.style';
 
 function Header({ navigationLinks }) {
@@ -47,8 +44,7 @@ function Header({ navigationLinks }) {
     <MantineHeader height={60} mb={120}>
       <Container className={classes.header} ref={ref}>
         <Group>
-          <Avatar src={profileImage} />
-          <Text fz="md">Michael Treyvaud</Text>
+          <Text fz="md">michael.treyvaud@gmail.com</Text>
         </Group>
         <Group spacing={5} className={classes.links}>
           {items}

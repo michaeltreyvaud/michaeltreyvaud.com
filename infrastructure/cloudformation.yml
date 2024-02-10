@@ -1,22 +1,4 @@
 Parameters:
-  AppName:
-    Type: String
-    Default: michaeltreyvauddotcom
-    Description: The name of the Application.
-  MicroService:
-    Type: String
-    Default: ui
-    Description: Name of the micro service
-  StackEnvironment:
-    Type: String
-    Default: prod
-    Description: The environment we're refrencing.
-  GitHubToken:
-    Type: String
-    Description: Github token to allow codebuild hook
-  GitHubRepo:
-    Type: String
-    Description: GitHub repo for codebuild to reference
   AcmCertificateArn:
     Type: String
     Description: ACM Certificate for registerd domain name
@@ -25,66 +7,6 @@ Parameters:
     Description: The app domain name - manual SSL in N.Virginia region
 
 Resources:
-  CodeBuildCredentials:
-    Type: AWS::CodeBuild::SourceCredential
-    Properties:
-      ServerType: GITHUB
-      AuthType: PERSONAL_ACCESS_TOKEN
-      Token: !Ref GitHubToken
-
-  CodeBuildProject:
-    Type: AWS::CodeBuild::Project
-    Properties:
-      Name: !Sub "${AppName}-${StackEnvironment}-${MicroService}-CodeBuildProject"
-      Description: 'Build environment for the front end'
-      ServiceRole: !GetAtt CodeBuildRole.Arn
-      Artifacts:
-        Type: NO_ARTIFACTS
-      Environment:
-        Type: LINUX_CONTAINER
-        ComputeType: BUILD_GENERAL1_SMALL
-        Image: aws/codebuild/standard:6.0
-        PrivilegedMode: True
-        EnvironmentVariables:
-        - Name: AWS_ACCOUNT_ID
-          Type: PLAINTEXT
-          Value: !Sub ${AWS::AccountId}
-        - Name: AWS_REGION
-          Type: PLAINTEXT
-          Value: !Sub ${AWS::Region}
-        - Name: APP_NAME
-          Type: PLAINTEXT
-          Value: !Sub ${AppName}
-        - Name: ENVIRONMENT
-          Type: PLAINTEXT
-          Value: !Sub ${StackEnvironment}
-        - Name: BUCKET
-          Type: PLAINTEXT
-          Value: !Ref WebBucket
-        - Name: CLOUDFRONT_DISTRIBUTION_ID
-          Type: PLAINTEXT
-          Value: !Ref CloudfrontDistribution
-      Source:
-        Location: !Ref GitHubRepo
-        Type: GITHUB
-        BuildSpec: "buildspec.yml"
-        Auth:
-          Resource: !Ref CodeBuildCredentials
-          Type: OAUTH
-      Triggers:
-        Webhook: true
-        FilterGroups:
-          - - Type: EVENT
-              Pattern: PUSH
-      TimeoutInMinutes: 60
-      Cache:
-        Modes:
-          - LOCAL_SOURCE_CACHE
-          - LOCAL_DOCKER_LAYER_CACHE
-          - LOCAL_CUSTOM_CACHE
-        Type: LOCAL
-    DependsOn: CodeBuildCredentials
-
   WebBucket:
     Type: "AWS::S3::Bucket"
     DeletionPolicy: Retain
@@ -168,43 +90,3 @@ Resources:
           - ErrorCode: 403
             ResponseCode: 200
             ResponsePagePath: "/index.html"
-  
-  CodeBuildRole:
-    Type: AWS::IAM::Role
-    Properties:
-      AssumeRolePolicyDocument:
-        Statement:
-          - Action: sts:AssumeRole
-            Effect: Allow
-            Principal:
-              Service: codebuild.amazonaws.com
-        Version: "2012-10-17"
-      RoleName: !Sub ${AppName}-${StackEnvironment}-${MicroService}-CodeBuildRole
-
-  CodeBuildPolicy:
-    Type: AWS::IAM::Policy
-    Properties:
-      PolicyDocument:
-        Statement:
-          - Action:
-              - logs:CreateLogGroup
-              - logs:CreateLogStream
-              - logs:PutLogEvents
-              - codebuild:StartBuild
-              - codebuild:BatchGetBuilds
-              - codebuild:CreateReportGroup
-              - codebuild:CreateReport
-              - codebuild:UpdateReport
-              - codebuild:BatchPutTestCases
-              - cloudwatch:PutMetricData
-              - s3:PutObject
-              - s3:GetObject
-              - s3:DeleteObject
-              - s3:ListBucket
-              - cloudfront:CreateInvalidation
-            Effect: Allow
-            Resource: "*"
-        Version: "2012-10-17"
-      PolicyName: !Sub ${AppName}-${StackEnvironment}-${MicroService}-CodeBuildPolicy
-      Roles:
-        - Ref: CodeBuildRole
